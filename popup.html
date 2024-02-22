@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <title>Web Traces</title>
+    <link href=css/popup.css rel=stylesheet>
+    <link rel=import href=html/templates.html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <center><h1>Web Traces</h1></center>
+        <center><h1><small>Your Personal Web Activity Tracker !</small> </h1></center>
+        <div id=pseudomodal data-visibility=close>
+            <center>
+                <div class=menu>
+                    <a href=# tabindex=-1 id=options>Options</a> &nbsp; 
+                    <a href=# tabindex=-1 id=stats>Stats</a>&nbsp;
+                    <a href=# tabindex=-1 id=screenshot>Screenshot</a> &nbsp;
+                    <a href=# tabindex=-1 id=fullscreen>Full-Screen</a> &nbsp;
+                    <a href=# tabindex=-1 id=night-mode><i class="fa-solid fa-moon"></i></a> &nbsp; 
+                    <a href=# tabindex=-1 id=close>&#x2716;</a>
+                </div>
+            </center>
+            <div class=content>
+                <div class="container options">
+                    <div id=idle-time></div>
+                    <div id=graph-gap></div>
+                    <div id=badge-display></div>
+                    <div class=halves-wrapper>
+                        <div class=half><a href=# tabindex=-1 class="button options-export-csv">Export to CSV</a> 
+                            <a
+                                href=# tabindex=-1 class="button options-backup">Backup</a> <a href=# tabindex=-1
+                                class="button with-loader options-restore"><span class=text data-default=Restore
+                                    data-warning="Corrupted data!" data-restored="Data restored!">Restore</span>
+                                <div class=loading>
+                                    <div class=shifter></div>
+                                </div>
+                                <input type=file accept=application/json>
+                            </a></div>
+                        <div class=half><a href=# tabindex=-1 class="button with-loader options-reset-settings"><span
+                                    class=text data-default="Reset settings" data-active=Really?>Reset settings</span>
+                                <div class=loading>
+                                    <div class=shifter></div>
+                                </div>
+                            </a> <a href=# tabindex=-1 class="button with-loader options-clear-all"><span class=text
+                                    data-default="Clear all data" data-active=Really?>Clear all data</span>
+                                <div class=loading>
+                                    <div class=shifter></div>
+                                </div>
+                            </a></div>
+                    </div>
+                </div>
+                <div class="container stats">
+                    <dl>
+                        <dt>Overall stats</dt>
+                        <dd>Click on a domain row in the stats table to get detailed stats about the domain.</dd>
+                    </dl>
+                    <dl>
+                        <dd class=stats-wrapper>
+                            <div class=text></div>
+                            <div class=charts></div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="container screenshot">
+                    <dl>
+                        <dt>How to take a screenshot</dt>
+                        <dd>
+                            <div class=list></div>
+                        </dd>
+                    </dl>
+                </div>
+              
+            </div>
+        </div>
+    </header>
+    <div id=wrapper data-visibility=today>
+        <div class=doughnut-wrapper>
+            <div id=doughnut-today class="doughnut-container sign-today-display"></div>
+            <div id=doughnut-average class="doughnut-container sign-average-display"></div>
+            <div id=doughnut-alltime class="doughnut-container sign-alltime-display"></div>
+        </div>
+        <nav class=chart-types>
+            <ul>
+                <li class=active><a href=# tabindex=-1 class=sign-today-link data-visibility=today>Today</a></li>
+                <li><a href=# tabindex=-1 class=sign-average-link data-visibility=average>Daily average</a></li>
+                <li><a href=# tabindex=-1 class=sign-alltime-link data-visibility=alltime>All-time</a></li>
+            </ul>
+        </nav><br>
+        <div class="table-container sign-today-display">
+            <table class=datatable id=table-today data-range=today></table>
+        </div>
+        <div class="table-container sign-average-display">
+            <table class=datatable id=table-average data-range=average></table>
+        </div>
+        <div class="table-container sign-alltime-display">
+            <table class=datatable id=table-alltime data-range=alltime></table>
+        </div>
+    </div>
+    <footer>Made with <span class=heart>♥</span> by 
+        <a href=https://github.com/nik01575 tabindex=-1 target=_blank class=external>A-N-R-S</a>
+    </footer>
+    <div class=screenshot-overlay></div>
+    
+    <div class="screenshot-content screenshot-capture"><a href=# tabindex=-1 class="button capture">Click Here For Taking Screenshot</a>
+    </div>
+   
+    <script src=js/config.js></script>
+    <script src=js/fn.js></script>
+    <script src=js/primitive-renderer.js></script>
+    <script src=popup.js></script>
+</body>
+
+</html>
